@@ -3,8 +3,7 @@ import requests
 class RequestsServcm():
     def requests(sql_query, parameters):
         # URL API на ASP.NET
-        url = "http://150.1.202.209:8963/api/Data/ExecuteQuery"
-       
+        
         # Формируем данные для отправки
         payload = {
             "Query": sql_query,

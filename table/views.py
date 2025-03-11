@@ -11,9 +11,7 @@ logger = logging.getLogger('table')
 """class RequestsServcm():
     def requests(sql_query, parameters):
         # URL API на ASP.NET
-        #url = "http://150.1.202.209:12345/api/execute-query/"
-       
-        payload = {
+       payload = {
             "Query": sql_query,
             "Parameters": parameters
             }
@@ -49,10 +47,6 @@ class Forms():
         self.create_query()
         #data = RequestsServcm.requests(self.query, self.parameters)
         conn = pymssql.connect(
-        server='150.1.0.10',
-        user='saperion',
-        password='saperion',
-        database='KRIVO442' 
         )
         logger.info(f"Query:{self.query}")
         cursor = conn.cursor()

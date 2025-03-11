@@ -22,10 +22,6 @@ class Forms():
 
     def get_sqlserver_connection(self):
         conn = pymssql.connect(
-           "SERVER=sdb2;"
-            "DATABASE=KRIVO442;"
-            "UID=saperion;"
-            "PASSWORD=saperion;"
         )
         
     
