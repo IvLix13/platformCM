@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/styleTasks.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="loading-container">
+        <div class="spinner"></div>
+        <p>Загрузка...</p>
+    </div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', async () => {
+    const cur_token = localStorage.getItem('user-token-CM'); // Получаем токен из localStorage
+    console.log('first page' + cur_token);
+    if (!cur_token) {
+        // Если токена нет, перенаправляем на страницу авторизации
+        console.log('no token' + cur_token);
+        window.location.href = '/auth/login/';
+        return;
+    }
+    const sendData = {token: cur_token};
+    const query = new URLSearchParams(sendData).toString();
+
+        // Отправляем запрос на сервер для проверки токена
+        fetch(`/auth/verify-token/?${query}`, {
+            method: 'GET',
+            headers: {
+                //'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'  },
+        })
+        .then(response => {
+            if (!response.ok) { window.location.href = "/auth/login/"};
+            return response.json();
+        })
+        .then(data => {
+            console.log('response after attempt oconnect to verify user:'+ data.data.username);
+            console.log('href' + data.data.get_url);
+            window.location.href = data.data.get_url;
+            localStorage.setItem('username-CM', data.data.username);
+            localStorage.setItem('user-role', data.data.role);
+        
+        });
+    })
+              
+      
+            //console.log('fall');
+            //window.location.href = '/auth/login/';
+        
+                  
+    // при переходе на / будет открыт экран загрузки, во время которого будет происходить проверка токена и выдача роли, и только после проверки роли идёт редирект на ту или иную страницу
+    //загрузка таблицы и тасков в кэш
+    //getTasksAndTable(); //тут юзаем асинхроночку
+    //showLoadingScreen();
+    //console.log('activeService: '+activeService);
+    /*
+    if (activeService === 'table') {
+        const tableData = localStorage.getItem('tableUser');
+        console.log('Table data: '+tableData)
+        if (tableData){
+            renderTable();
+        } else {
+            fetchTabelData();
+        }
+    } else if (activeService === 'tasks') {
+        const taskData = localStorage.getItem('taskUser');
+        console.log('Task data: '+taskData) 
+        if (taskData){
+            renderTasks();
+        } else {
+            fetchTaskData();
+        }
+    } else {
+        // Если ничего не выбрано, показываем дефолтное сообщение
+        firtsLoading();
+    }*/
+    //hideLoadingScreen();
+
+</script>
+</html>

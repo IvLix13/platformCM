@@ -1,0 +1,27 @@
+.task-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #f8f9fa;
+    cursor: grab;
+}
+
+.task-card:hover {
+    background: #e9ecef;
+}
+
+.task-title {
+    font-weight: bold;
+}
+
+.task-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.priority-1 { border-left: 5px solid red; }
+.priority-2 { border-left: 5px solid orange; }
+.priority-3 { border-left: 5px solid yellow; }
+.priority-4 { border-left: 5px solid green; }
+.priority-5 { border-left: 5px solid blue; }
