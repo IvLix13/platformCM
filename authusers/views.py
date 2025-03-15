@@ -8,13 +8,8 @@ from manager.serializers import MangerCMEntrySeializer
 from .serializers import LoginSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from django.contrib.auth import authenticate
-from rest_framework_simplejwt.tokens import RefreshToken
-from django.views import View
-from rest_framework_simplejwt.tokens import UntypedToken
-from django.shortcuts import redirect
 from rest_framework.decorators import api_view, permission_classes
 from .serializers import RegistrationSerializer
-import json 
 import logging
 from rest_framework.renderers import JSONRenderer
 from .renders import UserJSONRenderer
@@ -72,7 +67,7 @@ class LoginView(TokenObtainPairView):
         token = jwt.encode(payload, settings.SECRET_KEY, algorithm="HS256")
 
         if user.role == 'other-user':
-            redirect_url = 'http://150.1.202.209:3652/'
+            redirect_url = ''# added ip necessary
         else:
             redirect_url = '/mg/index/'
 

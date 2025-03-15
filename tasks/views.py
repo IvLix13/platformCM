@@ -1,10 +1,9 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import mainTasks
 from rest_framework import status
+from .models import mainTasks
 from .serializers import TasksEntrySeializer
-
 
 
 def get_start_data_task(user):

@@ -1,11 +1,9 @@
+import logging
+import pymssql
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import ControlCM
-from .serializer import ControlCMEntrySeializer, KRIVODataSerialzer
 from manager.models import CustomUser
-import logging
-import requests
-import pymssql
+
 
 logger = logging.getLogger('table')
 """class RequestsServcm():
@@ -61,22 +59,3 @@ class Forms():
             cursor.close()
             conn.close()
             
-
-
-"""
-def get_start_data(user):
-    date = 'WEEK'
-    userlogin = 'Likhobaba305'
-    userlogin = CustomUser.objects.get(userlogin=userlogin)
-    username_for_search = f"{userlogin.f} {userlogin.i[0]}.{userlogin.o[0]}."
-    f = Forms(username_for_search, date)
-    data = f.get_forms() # получаем данные из KRIVO.dbo.AutoUpdateLog
-    logger.info(f"Get KRIVO data for {userlogin}: {data}\n End Data of {userlogin}.\n\n\n")   
-    return data
-    
-
-"""
-
-
-
-

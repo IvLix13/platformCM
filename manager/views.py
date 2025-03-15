@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from django.shortcuts import render
 from rest_framework_simplejwt.views import TokenObtainPairView
-from authusers.permissions import IsAdmin, IsBossCM, IsSimpleCM, IsAllowAny
+from authusers.permissions import IsAllowAny
 
 class FirstPageView(APIView):
         permission_classes = [IsAllowAny]
