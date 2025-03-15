@@ -20,6 +20,7 @@ class Forms():
                 self.parameters = [self.date, self.user]
 
 
+    # here will be DDMS data to extract data 
     def get_sqlserver_connection(self):
         conn = pymssql.connect(
         )
