@@ -105,3 +105,14 @@ box-shadow: 0 6px 12px rgba(177, 171, 171, 0.2);
     align-items: center;
     z-index: 9999; /* Поверх всех элементов */
 }
+.table-container {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.task { background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 10px; position: relative; cursor: grab; }
+.task .avatar { width: 40px; height: 40px; border-radius: 50%; }
+.task .task-header { display: flex; align-items: center; justify-content: space-between; }
+.task .countdown { font-size: 12px; color: red; }
+#notification { position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); background: #ffc107; padding: 10px; border-radius: 5px; display: none; }
